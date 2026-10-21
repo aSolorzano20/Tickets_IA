@@ -1,12 +1,62 @@
 :root {
   color-scheme: light;
+  --page-background:
+    radial-gradient(ellipse at 12% 18%, rgb(132 190 255 / 72%), transparent 35%),
+    radial-gradient(ellipse at 86% 22%, rgb(205 174 255 / 65%), transparent 32%),
+    radial-gradient(ellipse at 74% 88%, rgb(139 222 232 / 66%), transparent 35%),
+    linear-gradient(145deg, #edf4ff, #f7f2ff 52%, #e9f8ff);
+  --card-background: rgb(255 255 255 / 56%);
+  --card-fallback-background: rgb(255 255 255 / 94%);
+  --card-border: rgb(255 255 255 / 78%);
+  --heading-color: #152442;
+  --text-color: #17233c;
+  --muted-color: #5c6a83;
+  --label-color: #34435d;
+  --input-background: rgb(255 255 255 / 70%);
+  --input-focus-background: #fff;
+  --input-border: rgb(119 140 174 / 23%);
+  --secondary-background: rgb(255 255 255 / 55%);
+  --secondary-hover-background: rgb(255 255 255 / 85%);
+  --code-background: rgb(255 255 255 / 55%);
+  --focus-color: #17233c;
+  --message-color: #a12d3a;
+  --toggle-background: rgb(255 255 255 / 76%);
+  --toggle-border: rgb(119 140 174 / 32%);
+  --toggle-color: #34435d;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #17233c;
-  background: #eaf1ff;
+  color: var(--text-color);
+  background: var(--page-background);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page-background:
+    radial-gradient(ellipse at 12% 18%, rgb(50 77 137 / 48%), transparent 35%),
+    radial-gradient(ellipse at 86% 22%, rgb(92 65 129 / 38%), transparent 32%),
+    radial-gradient(ellipse at 74% 88%, rgb(39 93 111 / 40%), transparent 35%),
+    linear-gradient(145deg, #111827, #1b1b31 52%, #12232d);
+  --card-background: rgb(27 35 53 / 78%);
+  --card-fallback-background: #1b2335;
+  --card-border: rgb(211 224 255 / 17%);
+  --heading-color: #f1f5ff;
+  --text-color: #e5ebf8;
+  --muted-color: #b1bdd4;
+  --label-color: #d4def0;
+  --input-background: rgb(14 22 37 / 68%);
+  --input-focus-background: #172238;
+  --input-border: rgb(169 190 226 / 25%);
+  --secondary-background: rgb(197 211 239 / 10%);
+  --secondary-hover-background: rgb(197 211 239 / 17%);
+  --code-background: rgb(197 211 239 / 14%);
+  --focus-color: #dce7ff;
+  --message-color: #ff9ca8;
+  --toggle-background: rgb(27 35 53 / 88%);
+  --toggle-border: rgb(169 190 226 / 30%);
+  --toggle-color: #e5ebf8;
 }
 
 * {
@@ -20,20 +70,16 @@ body {
   margin: 0;
   display: grid;
   place-items: center;
-  padding: 32px 18px;
-  background:
-    radial-gradient(ellipse at 12% 18%, rgb(132 190 255 / 72%), transparent 35%),
-    radial-gradient(ellipse at 86% 22%, rgb(205 174 255 / 65%), transparent 32%),
-    radial-gradient(ellipse at 74% 88%, rgb(139 222 232 / 66%), transparent 35%),
-    linear-gradient(145deg, #edf4ff, #f7f2ff 52%, #e9f8ff);
+  padding: 76px 18px 32px;
+  background: var(--page-background);
 }
 
 .glass-card {
   width: min(100%, 470px);
   padding: clamp(28px, 7vw, 44px);
-  border: 1px solid rgb(255 255 255 / 78%);
+  border: 1px solid var(--card-border);
   border-radius: 32px;
-  background: rgb(255 255 255 / 56%);
+  background: var(--card-background);
   box-shadow:
     0 24px 70px rgb(42 69 119 / 16%),
     inset 0 1px 0 rgb(255 255 255 / 90%);
@@ -43,7 +89,7 @@ body {
 
 h1 {
   margin: 0;
-  color: #152442;
+  color: var(--heading-color);
   font-size: clamp(1.8rem, 6vw, 2.2rem);
   font-weight: 700;
   letter-spacing: -0.045em;
@@ -52,7 +98,7 @@ h1 {
 
 .intro {
   margin: 10px 0 28px;
-  color: #5c6a83;
+  color: var(--muted-color);
   font-size: 0.98rem;
   line-height: 1.5;
 }
@@ -68,7 +114,7 @@ form {
 }
 
 label {
-  color: #34435d;
+  color: var(--label-color);
   font-size: 0.9rem;
   font-weight: 600;
 }
@@ -78,11 +124,11 @@ textarea {
   width: 100%;
   min-height: 50px;
   padding: 13px 15px;
-  border: 1px solid rgb(119 140 174 / 23%);
+  border: 1px solid var(--input-border);
   border-radius: 15px;
   outline: none;
-  background: rgb(255 255 255 / 70%);
-  color: #17233c;
+  background: var(--input-background);
+  color: var(--text-color);
   font: inherit;
   transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
@@ -95,7 +141,7 @@ textarea {
 input:focus,
 textarea:focus {
   border-color: #5489f5;
-  background: #fff;
+  background: var(--input-focus-background);
   box-shadow: 0 0 0 4px rgb(84 137 245 / 17%);
 }
 
@@ -125,7 +171,7 @@ button:active {
 }
 
 button:focus-visible {
-  outline: 3px solid #17233c;
+  outline: 3px solid var(--focus-color);
   outline-offset: 4px;
 }
 
@@ -154,35 +200,71 @@ button:focus-visible {
 }
 
 .button-link:focus-visible {
-  outline: 3px solid #17233c;
+  outline: 3px solid var(--focus-color);
   outline-offset: 4px;
 }
 
 .secondary-button {
   width: 100%;
   margin-top: 14px;
-  border: 1px solid rgb(84 112 165 / 24%);
-  background: rgb(255 255 255 / 55%);
+  border: 1px solid var(--toggle-border);
+  background: var(--secondary-background);
   box-shadow: none;
-  color: #34435d;
+  color: var(--label-color);
 }
 
 .secondary-button:hover {
-  background: rgb(255 255 255 / 85%);
+  background: var(--secondary-hover-background);
   box-shadow: none;
+}
+
+.theme-toggle {
+  position: fixed;
+  z-index: 1;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  width: 48px;
+  min-height: 48px;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--toggle-border);
+  border-radius: 50%;
+  background: var(--toggle-background);
+  box-shadow: 0 5px 16px rgb(42 69 119 / 12%);
+  color: var(--toggle-color);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.theme-toggle svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.theme-toggle:hover {
+  background: var(--secondary-hover-background);
+  box-shadow: 0 8px 20px rgb(42 69 119 / 18%);
+  filter: none;
 }
 
 .message {
   min-height: 1.5em;
   margin: 0;
-  color: #a12d3a;
+  color: var(--message-color);
   font-size: 0.9rem;
   line-height: 1.5;
 }
 
 .demo-note {
   margin: 20px 0 0;
-  color: #5c6a83;
+  color: var(--muted-color);
   font-size: 0.88rem;
   line-height: 1.5;
 }
@@ -190,7 +272,7 @@ button:focus-visible {
 code {
   padding: 2px 5px;
   border-radius: 5px;
-  background: rgb(255 255 255 / 55%);
+  background: var(--code-background);
   font-size: 0.95em;
 }
 
@@ -205,6 +287,6 @@ code {
 
 @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .glass-card {
-    background: rgb(255 255 255 / 94%);
+    background: var(--card-fallback-background);
   }
 }
